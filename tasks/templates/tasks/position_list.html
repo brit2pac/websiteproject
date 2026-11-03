@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Positions | IT Task Manager{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+        <h1 class="fw-bold mb-1">Positions</h1>
+        <p class="text-secondary mb-0">
+            View the positions available in your team.
+        </p>
+    </div>
+
+    <a href="{% url 'worker-list' %}" class="btn btn-outline-secondary">
+        Back to workers
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th class="px-4 py-3">#</th>
+                    <th class="py-3">Position name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for position in positions %}
+                <tr>
+                    <td class="px-4 py-3 text-secondary">
+                        {{ forloop.counter }}
+                    </td>
+                    <td class="py-3 fw-semibold">
+                        <a href="{% url 'position-detail' position.pk %}" class="text-decoration-none fw-bold">
+                            {{ position.name }}
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2" class="text-center py-5">
+                        <h2 class="h5">No positions found</h2>
+                        <p class="text-secondary mb-0">
+                            Add positions to see them listed here.
+                        </p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
