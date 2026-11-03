@@ -121,7 +121,11 @@ def worker_detail(request, pk):
         pk=pk,
     )
 
-    tasks = worker.tasks.select_related("task_type").order_by("deadline", "name")
+    tasks = (
+        worker.tasks
+        .select_related("task_type")
+        .order_by("deadline", "name")
+    )
 
     return render(
         request,
