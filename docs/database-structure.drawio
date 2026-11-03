@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net" modified="2026-11-03T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="task-manager-schema" name="Database structure">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="position" value="&lt;b&gt;Position&lt;/b&gt;&lt;hr&gt;id: AutoField (PK)&lt;br&gt;name: CharField" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="worker" value="&lt;b&gt;Worker (AbstractUser)&lt;/b&gt;&lt;hr&gt;id: AutoField (PK)&lt;br&gt;username, password, email&lt;br&gt;first_name, last_name, ...&lt;br&gt;position_id: ForeignKey (nullable)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="430" y="280" width="260" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="tasktype" value="&lt;b&gt;TaskType&lt;/b&gt;&lt;hr&gt;id: AutoField (PK)&lt;br&gt;name: CharField" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="810" y="120" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="task" value="&lt;b&gt;Task&lt;/b&gt;&lt;hr&gt;id: AutoField (PK)&lt;br&gt;name: CharField&lt;br&gt;description: TextField&lt;br&gt;deadline: DateTimeField (nullable)&lt;br&gt;is_completed: BooleanField&lt;br&gt;priority: CharField&lt;br&gt;task_type_id: ForeignKey (PROTECT)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="810" y="310" width="270" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="position-worker" value="1                     0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeWidth=2;" edge="1" parent="1" source="position" target="worker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="type-task" value="1                     0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeWidth=2;" edge="1" parent="1" source="tasktype" target="task">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="worker-task" value="0..*                  0..*&lt;br&gt;Many-to-many through tasks_task_assignees" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeWidth=2;dashed=1;" edge="1" parent="1" source="worker" target="task">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

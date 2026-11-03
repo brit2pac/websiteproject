@@ -1,77 +1,75 @@
 # IT Task Manager
 
-A simple task management web application built with Django. It was created to make it easier to organize tasks, keep track of deadlines, and manage work within a team.
+A Django task manager for IT teams. Team members can create tasks, assign one or more workers, set a priority and deadline, and track completion.
 
-## About the project
+## Features
 
-The application allows users to manage tasks in one place. Each task can have a description, deadline, priority, type, and assigned workers.
+- Sign in and sign out with Django authentication.
+- Create, view, edit, delete, search, filter, and paginate tasks.
+- Assign tasks to multiple workers and mark them completed or reopen them.
+- Review workers, positions, task types, and each worker's open and completed tasks.
+- Manage team members, positions, and task types in Django Admin.
+- Responsive pages styled with Bootstrap 5.
 
-I built this project as part of my Python and Django learning journey, focusing on working with models, views, templates, authentication, and CRUD operations.
+## Data model
 
-## What you can do
+The database contains `Worker`, `Position`, `TaskType`, and `Task` models. A worker may have one position, and each position may have many workers. Each task has one task type and may be assigned to many workers. See the editable [database structure diagram](docs/database-structure.drawio).
 
-- View and search for tasks
-- Filter tasks by available criteria
-- Create, edit, and delete tasks
-- Set task priorities and deadlines
-- Assign tasks to team members
-- Mark tasks as completed or reopen them
-- Manage tasks and workers through Django Admin
+## Requirements
 
-## Built with
+- Python 3.12 or newer
+- pip
 
-- Python
-- Django
-- SQLite
-- Bootstrap 5
-- HTML
+## Setup
 
-## Getting started
-
-Clone the repository:
+Clone the repository and switch to the implementation branch:
 
 ```bash
 git clone https://github.com/brit2pac/websiteproject.git
 cd websiteproject
+git switch develop
 ```
 
-Create a virtual environment and activate it:
+Create and activate a virtual environment, then install dependencies:
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-Install the project dependencies:
-
-```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Apply the migrations:
+Create your local environment file from the example and set a private secret key:
+
+```bash
+cp .env.example .env
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
+
+Copy the printed value into `SECRET_KEY` in `.env`. The `.env` file and local SQLite database are ignored by Git. For deployment, set `SECRET_KEY`, `DEBUG=False`, and `ALLOWED_HOSTS` in the hosting platform's environment settings.
+
+Create the database and an administrator account:
 
 ```bash
 python manage.py migrate
-```
-
-Create an admin account:
-
-```bash
 python manage.py createsuperuser
-```
-
-Run the development server:
-
-```bash
 python manage.py runserver
 ```
 
-Open `http://127.0.0.1:8000/` in your browser.
+Open <http://127.0.0.1:8000/>. Sign in with the superuser account, then add workers, positions, and task types at <http://127.0.0.1:8000/admin/> before creating tasks.
 
-## Admin panel
+## Main pages
 
-To manage tasks, workers, positions, and task types, open `http://127.0.0.1:8000/admin/` and log in with your superuser account.
+- `/` — task list, search, filters, and pagination
+- `/tasks/create/` — create a task
+- `/workers/` — team directory
+- `/positions/` — position directory
+- `/task-types/` — task type directory
+- `/admin/` — administrative setup
 
-## A note
+## Project structure
 
-This project is a learning project, so there is still room to improve and add new features.
+```text
+config/       Django project configuration
+tasks/        models, forms, views, URLs, and templates
+docs/         project documentation and database diagram
+```
