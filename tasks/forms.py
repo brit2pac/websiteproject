@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Task, Worker
+from tasks.models import Task, Worker
 
 
 class TaskForm(forms.ModelForm):

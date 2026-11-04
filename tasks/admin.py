@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import Position, Worker, TaskType, Task
+from tasks.models import Position, Worker, TaskType, Task
 
 
 @admin.register(Position)
