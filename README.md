@@ -4,7 +4,8 @@
 
 <p align="center">
   A simple home for the work behind great software.<br>
-  Create tasks, bring the right people in, and keep delivery moving.
+  Create tasks, bring the right people in, and keep delivery moving.<br>
+  <a href="https://it-task-manager-dqdd.onrender.com/">Open the live app</a>
 </p>
 
 <p align="center">
