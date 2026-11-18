@@ -5,7 +5,8 @@
 <p align="center">
   A simple home for the work behind great software.<br>
   Create tasks, bring the right people in, and keep delivery moving.<br>
-  <a href="https://it-task-manager-dqdd.onrender.com/">Open the live app</a>
+  <a href="https://it-task-manager-dqdd.onrender.com/">Open the live app</a><br>
+  <a href="https://docs.google.com/document/d/1D28n0XwOkLK0lvHvSkeuaOxxp9CtUgQimB2sThNMFGc/edit?usp=sharing">Submission details: repository, live app, and test account</a>
 </p>
 
 <p align="center">
